@@ -1,28 +1,29 @@
 import {ListItem, Checkbox, FormControlLabel} from '@material-ui/core'
 
 const Todo = (props) => {
-    const handleCheckBox = (e) => {
+    const handleCheckBox = e => {
         props.setTodoList(prevState => {
             return prevState.map((todo, idx) => {
                 if(idx === props.id) {
-                    todo.done = true;
+                    todo.done = !todo.done;
                 }
                 return todo;
             });
-        });    
+        });
     }
     return (
-        <ListItem>
+        <ListItem
+            style={ props.todo.done ? { textDecoration: 'line-through', color: '#898989' } : {}}
+            className='todo-item' >
             <FormControlLabel control={
                     <Checkbox
                         color="primary"
                         inputProps={{ 'aria-label': props.todo.todo }}
-                        onChange={handleCheckBox}
+                        onChange={ handleCheckBox }
+                        checked={ props.todo.done }
                     />
                 }
-                className={ props.todo.done === true ? 'task-done' : '' }
                 label={props.todo.todo}
-                onChange={handleCheckBox}
             />
         </ListItem>
     );

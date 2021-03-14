@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css';
 
 // Components
@@ -7,15 +7,12 @@ import TodoList from './components/TodoList'
 
 function App() {
   const [todoList, setTodoList] = useState([]);
-
-  useEffect(() => {
-    console.log(todoList);
-  }, [todoList]);
+  const [display, setDisplay] = useState(1);
 
   return (
     <div className="App">
-      <Fields todoList={todoList} setTodoList={setTodoList} />
-      <TodoList todoList={todoList} setTodoList={setTodoList} />
+      <Fields setDisplay={setDisplay} todoList={todoList} setTodoList={setTodoList} />
+      <TodoList display={display} todoList={todoList} setTodoList={setTodoList} />
     </div>
   );
 }

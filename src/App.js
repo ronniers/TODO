@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <Fields setDisplay={setDisplay} todoList={todoList} setTodoList={setTodoList} />
+      <Fields display={display} setDisplay={setDisplay} todoList={todoList} setTodoList={setTodoList} />
       <TodoList display={display} todoList={todoList} setTodoList={setTodoList} />
     </div>
   );
